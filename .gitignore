@@ -1,0 +1,22 @@
+# Raw + generated data are not versioned; reproduce via src/00_download_data.py
+data/raw/*.csv
+data/raw/*.zip
+data/processed/*
+*.duckdb
+*.duckdb.wal
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Power BI
+*.pbix.bak
+~$*
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

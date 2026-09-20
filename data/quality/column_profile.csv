@@ -1,0 +1,37 @@
+column,distinct_values,unknown_count,unknown_pct,blank_count,most_common_value,most_common_count,usable_for_analysis
+caused_by,4,141689,99.98,0,CHG0000097,11,False
+vendor,5,141468,99.83,0,code 8s,167,False
+cmdb_ci,51,141267,99.69,0,cmdb_ci 31,32,False
+rfc,182,140721,99.3,0,CHG0000132,20,False
+problem_id,253,139417,98.38,0,Problem ID  14,184,False
+sys_created_by,186,53076,37.45,0,Created by 10,24223,True
+sys_created_at,11553,53076,37.45,0,4/7/2016 14:50,56,True
+u_symptom,526,32964,23.26,0,Symptom 491,51985,True
+assigned_to,235,27496,19.4,0,Resolver 17,10590,True
+assignment_group,79,14213,10.03,0,Group 70,43474,True
+opened_by,208,4835,3.41,0,Opened by  17,41466,True
+resolved_at,18506,3141,2.22,0,3/6/2016 16:29,93,True
+closed_code,18,714,0.5,0,code 6,86583,True
+resolved_by,217,226,0.16,0,Resolved by 15,15421,True
+subcategory,255,111,0.08,0,Subcategory 174,35785,True
+category,59,78,0.06,0,Category 26,18453,True
+location,225,76,0.05,0,Location 204,31690,True
+caller_id,5245,29,0.02,0,Caller 1904,1425,True
+incident_state,9,0,0.0,0,Active,38716,True
+number,24918,0,0.0,0,INC0019396,58,True
+reassignment_count,28,0,0.0,0,0,69876,True
+active,2,0,0.0,0,true,116726,True
+contact_type,5,0,0.0,0,Phone,140462,True
+sys_updated_by,846,0,0.0,0,Updated by 908,36162,True
+made_sla,2,0,0.0,0,true,132497,True
+sys_mod_count,115,0,0.0,0,0,24913,True
+reopen_count,9,0,0.0,0,0,139398,True
+opened_at,19849,0,0.0,0,14/4/2016 20:42,58,True
+sys_updated_at,50664,0,0.0,0,24/3/2016 18:40,420,True
+u_priority_confirmation,2,0,0.0,0,false,100740,True
+notify,2,0,0.0,0,Do Not Notify,141593,True
+priority,4,0,0.0,0,3 - Moderate,132452,True
+impact,3,0,0.0,0,2 - Medium,134335,True
+urgency,3,0,0.0,0,2 - Medium,134094,True
+knowledge,2,0,0.0,0,false,116349,True
+closed_at,2707,0,0.0,0,24/3/2016 18:59,3324,True
