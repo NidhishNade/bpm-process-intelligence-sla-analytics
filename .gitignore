@@ -20,3 +20,6 @@ Thumbs.db
 .DS_Store
 .vscode/
 .idea/
+
+# Generated analysis result sets (regenerate: python src/04_run_analysis.py)
+data/processed/analysis/

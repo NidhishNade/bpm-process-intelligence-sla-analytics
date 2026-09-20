@@ -1,0 +1,18 @@
+{
+  "columns_dropped_sparse": [
+    "caused_by",
+    "vendor",
+    "cmdb_ci",
+    "rfc",
+    "problem_id"
+  ],
+  "events_removed_invalid_state": 5,
+  "events_with_negative_dwell": 0,
+  "event_rows": 141707,
+  "cases_without_valid_resolution_time": 1556,
+  "case_rows": 24918,
+  "outputs": {
+    "events": "data\\processed\\event_log_clean.parquet",
+    "cases": "data\\processed\\incident_case.parquet"
+  }
+}
