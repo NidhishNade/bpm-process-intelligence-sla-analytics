@@ -317,7 +317,7 @@ MEASURES: list[tuple[str, str, str, str, str]] = [
         "Selected Incident",
         "SELECTEDVALUE (\n"
         "    fact_incident_case[incident_number],\n"
-        "    \"Select a single incident to drill through\"\n"
+        "    \"Pick an incident\"\n"
         ")",
         "",
         "09 Drill-through",

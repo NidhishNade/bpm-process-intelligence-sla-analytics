@@ -249,7 +249,7 @@ table fact_incident_case
 	measure 'Selected Incident' =
 				SELECTEDVALUE (
 				    fact_incident_case[Incident Number],
-				    "Select a single incident to drill through"
+				    "Pick an incident"
 				)
 		lineageTag: aa032bee-bf0c-4dab-9940-7139f38834f6
 		displayFolder: 09 Drill-through
