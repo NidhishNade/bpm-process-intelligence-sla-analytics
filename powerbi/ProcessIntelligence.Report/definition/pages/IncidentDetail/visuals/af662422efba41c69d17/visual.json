@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "af662422efba41c69d17",
+  "position": {
+    "x": 20,
+    "y": 150,
+    "z": 0,
+    "width": 1240,
+    "height": 270,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_event"
+                    }
+                  },
+                  "Property": "Event Sequence"
+                }
+              },
+              "queryRef": "fact_incident_event.Event Sequence",
+              "nativeQueryRef": "Event Sequence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_event"
+                    }
+                  },
+                  "Property": "Event Timestamp"
+                }
+              },
+              "queryRef": "fact_incident_event.Event Timestamp",
+              "nativeQueryRef": "Event Timestamp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State"
+                }
+              },
+              "queryRef": "dim_state.State",
+              "nativeQueryRef": "State"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State Category"
+                }
+              },
+              "queryRef": "dim_state.State Category",
+              "nativeQueryRef": "State Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_event"
+                    }
+                  },
+                  "Property": "Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_event.Dwell Hours",
+              "nativeQueryRef": "Dwell Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Event Timeline'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

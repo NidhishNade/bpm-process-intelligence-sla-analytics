@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "38b6023ec57f4ee39f29",
+  "position": {
+    "x": 20,
+    "y": 460,
+    "z": 0,
+    "width": 1240,
+    "height": 240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State"
+                }
+              },
+              "queryRef": "dim_state.State",
+              "nativeQueryRef": "State"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State Category"
+                }
+              },
+              "queryRef": "dim_state.State Category",
+              "nativeQueryRef": "State Category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Dwell Hours",
+              "nativeQueryRef": "Total Dwell Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Avg Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Avg Dwell Hours",
+              "nativeQueryRef": "Avg Dwell Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Dwell Hours",
+              "nativeQueryRef": "Median Dwell Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "% of Total Elapsed Time"
+                }
+              },
+              "queryRef": "fact_incident_case.% of Total Elapsed Time",
+              "nativeQueryRef": "% of Total Elapsed Time"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dwell Time Profile by State'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

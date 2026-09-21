@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "8dba31c5fce446f3b1e4",
+  "position": {
+    "x": 20,
+    "y": 170,
+    "z": 0,
+    "width": 610,
+    "height": 260,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_date"
+                    }
+                  },
+                  "Property": "Year-Month"
+                }
+              },
+              "queryRef": "dim_date.Year-Month",
+              "nativeQueryRef": "Year-Month"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Attainment %"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Attainment %",
+              "nativeQueryRef": "SLA Attainment %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SLA Attainment by Month'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

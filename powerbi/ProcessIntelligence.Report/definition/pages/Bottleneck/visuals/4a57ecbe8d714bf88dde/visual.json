@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "4a57ecbe8d714bf88dde",
+  "position": {
+    "x": 20,
+    "y": 160,
+    "z": 0,
+    "width": 620,
+    "height": 280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State"
+                }
+              },
+              "queryRef": "dim_state.State",
+              "nativeQueryRef": "State"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Dwell Hours",
+              "nativeQueryRef": "Total Dwell Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Elapsed Hours by State (where time is lost)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

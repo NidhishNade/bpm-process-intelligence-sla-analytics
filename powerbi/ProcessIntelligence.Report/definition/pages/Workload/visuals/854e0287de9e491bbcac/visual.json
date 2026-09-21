@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "854e0287de9e491bbcac",
+  "position": {
+    "x": 20,
+    "y": 160,
+    "z": 0,
+    "width": 620,
+    "height": 280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Reassignment Count"
+                }
+              },
+              "queryRef": "fact_incident_case.Reassignment Count",
+              "nativeQueryRef": "Reassignment Count"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Incidents"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Incidents",
+              "nativeQueryRef": "Total Incidents"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Attainment %"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Attainment %",
+              "nativeQueryRef": "SLA Attainment %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SLA Attainment Degrades with Each Handoff'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

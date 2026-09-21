@@ -781,16 +781,18 @@ def build_pages() -> list[dict]:
         ),
         visual(
             "scatterChart", 20, 480, 620, 220,
-            title="Variant Length vs Median Resolution Hours",
+            title="Events per Incident vs Median Resolution Hours",
             entities={F: "fact_incident_case", "v": "dim_variant"},
+            # Scatter X/Y must be measures: a raw column on X alongside a
+            # Category raises DataViewMappingError_ScatterGroupingValues.
             select=[
                 col("v", "dim_variant", "variant_path", "Variant Path"),
-                col("v", "dim_variant", "variant_length", "Variant Length"),
+                mea(F, "Avg Events per Incident"),
                 mea(F, "Median Resolution Hours"),
             ],
             projections={
                 "Category": ["dim_variant.variant_path"],
-                "X": ["dim_variant.variant_length"],
+                "X": [f"{MEASURE_HOST_TABLE}.Avg Events per Incident"],
                 "Y": [f"{MEASURE_HOST_TABLE}.Median Resolution Hours"],
             },
         ),

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "2e699aeaa0834d859a1c",
+  "position": {
+    "x": 20,
+    "y": 440,
+    "z": 0,
+    "width": 1240,
+    "height": 260,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Incident Number"
+                }
+              },
+              "queryRef": "fact_incident_case.Incident Number",
+              "nativeQueryRef": "Incident Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_priority"
+                    }
+                  },
+                  "Property": "Priority"
+                }
+              },
+              "queryRef": "dim_priority.Priority",
+              "nativeQueryRef": "Priority"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_assignment_group"
+                    }
+                  },
+                  "Property": "Assignment Group"
+                }
+              },
+              "queryRef": "dim_assignment_group.Assignment Group",
+              "nativeQueryRef": "Assignment Group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_category"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "dim_category.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Path"
+                }
+              },
+              "queryRef": "dim_variant.Variant Path",
+              "nativeQueryRef": "Variant Path"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Attainment %"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Attainment %",
+              "nativeQueryRef": "SLA Attainment %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Resolution Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Resolution Hours",
+              "nativeQueryRef": "Median Resolution Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Incident Attributes'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,64 +1,64 @@
 table fact_incident_event
-	lineageTag: 5cae1074-26b8-48f7-ab60-e270b5f3ea38
+	lineageTag: 009af283-6641-4bd8-8679-fa16a7fabe12
 
 	column event_key
 		dataType: int64
 		isHidden
-		lineageTag: cb5d9640-5d31-4135-bd0f-97d1b5413700
+		lineageTag: b0f1a9f6-bcd8-475c-a9b4-01a555eb5fc3
 		summarizeBy: none
 		sourceColumn: event_key
 
 	column case_key
 		dataType: int64
 		isHidden
-		lineageTag: 900a6d20-6cee-47f7-8cfd-e8e96f7fca2c
+		lineageTag: 8ef2fbaa-4c6c-4e7d-ae12-992088283268
 		summarizeBy: none
 		sourceColumn: case_key
 
 	column 'Incident Number'
 		dataType: string
-		lineageTag: 8e6c839b-ffab-4c01-ad75-0e2e6b0f4eb9
+		lineageTag: 089c010e-7b69-4822-ad4f-375d16e63d2f
 		summarizeBy: none
 		sourceColumn: incident_number
 
 	column state_key
 		dataType: int64
 		isHidden
-		lineageTag: 2005ea21-0c7c-4c3f-a6cd-b125c44f57d7
+		lineageTag: 938990f8-67d3-4889-8212-0dd53639f7a5
 		summarizeBy: none
 		sourceColumn: state_key
 
 	column next_state_key
 		dataType: int64
 		isHidden
-		lineageTag: 8cef6aa4-293d-4353-a7d9-8d558e3a5707
+		lineageTag: b9a04f90-5e63-4977-92da-fde69f9947fa
 		summarizeBy: none
 		sourceColumn: next_state_key
 
 	column priority_key
 		dataType: int64
 		isHidden
-		lineageTag: d5599dd3-5ba5-494f-af3b-e29642e942b7
+		lineageTag: ea943efc-10c1-4028-9bd0-232b45a47d0f
 		summarizeBy: none
 		sourceColumn: priority_key
 
 	column assignment_group_key
 		dataType: int64
 		isHidden
-		lineageTag: 5fa983eb-83ac-434c-ae09-771b2b2e700f
+		lineageTag: 0a84efac-e747-49d5-9ca0-ec330907a1b2
 		summarizeBy: none
 		sourceColumn: assignment_group_key
 
 	column event_date_key
 		dataType: int64
 		isHidden
-		lineageTag: 0543406b-f6d3-4ef7-b124-a4c52e93332f
+		lineageTag: 77577e1f-d304-4a0d-998d-c8d3726969bf
 		summarizeBy: none
 		sourceColumn: event_date_key
 
 	column 'Event Timestamp'
 		dataType: dateTime
-		lineageTag: b1eeeb11-ed2d-4ee9-9ed0-6b3177b74d66
+		lineageTag: 7b10b153-d594-43f5-b528-c799d6a7dce2
 		summarizeBy: none
 		sourceColumn: event_timestamp
 		formatString: yyyy-mm-dd hh:nn:ss
@@ -66,49 +66,49 @@ table fact_incident_event
 
 	column 'Event Sequence'
 		dataType: int64
-		lineageTag: 6b580772-b3ec-44b0-a41d-0b1f3e318a4e
+		lineageTag: e60a6ca5-25fb-45bf-938f-08084ecb7cdd
 		summarizeBy: none
 		sourceColumn: event_seq
 
 	column events_in_case
 		dataType: int64
-		lineageTag: cbd8c7a1-fcf8-48f3-a68d-11f0eb8ab8e9
+		lineageTag: c0fd289f-b609-4c03-9664-8b5002f0abfd
 		summarizeBy: none
 		sourceColumn: events_in_case
 
 	column dwell_minutes
 		dataType: double
-		lineageTag: 2b110f7b-e566-4c73-a5c4-06eae717116f
+		lineageTag: 9dcc99c2-d510-4ad5-ae98-c9a6ce1c5a46
 		summarizeBy: none
 		sourceColumn: dwell_minutes
 
 	column 'Dwell Hours'
 		dataType: double
-		lineageTag: e680fb5d-f0e3-4af5-af10-1f8ef842aeba
+		lineageTag: f31d926d-2bc8-4e1e-a887-da578930cd04
 		summarizeBy: none
 		sourceColumn: dwell_hours
 
 	column is_first_event
 		dataType: int64
-		lineageTag: 592fb09e-4f32-4a12-bc7b-d3c703ea8a17
+		lineageTag: 899f1a1d-4d4c-4a16-aef8-7913176e8c37
 		summarizeBy: none
 		sourceColumn: is_first_event
 
 	column is_last_event
 		dataType: int64
-		lineageTag: 1ac47963-36af-493a-9641-3eadf1e1637c
+		lineageTag: 879a3dfe-fba1-47d0-b10d-75cd998741a1
 		summarizeBy: none
 		sourceColumn: is_last_event
 
 	column is_waiting_event
 		dataType: int64
-		lineageTag: 48dec0a4-9e8b-4e2a-afa6-9789628c79a6
+		lineageTag: 2b13b44b-1b52-4b1f-885f-e0d2f96866c0
 		summarizeBy: none
 		sourceColumn: is_waiting_event
 
 	column event_hour
 		dataType: int64
-		lineageTag: c7bd63c8-0b00-415c-9c88-2fdf7d2ee381
+		lineageTag: 599758f6-94f8-4bdd-a16f-36f6ce1b224a
 		summarizeBy: none
 		sourceColumn: event_hour
 

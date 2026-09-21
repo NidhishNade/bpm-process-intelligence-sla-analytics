@@ -1,29 +1,29 @@
 table dim_priority
-	lineageTag: f66c8caa-ecfb-499d-8872-3a41c9d63f0d
+	lineageTag: 3f034c64-014e-4dbd-8f2b-4e86dd891048
 
 	column priority_key
 		dataType: int64
 		isHidden
-		lineageTag: 57cc42a5-5601-4adf-9eba-2e1a9ddf13f3
+		lineageTag: 06b2d8be-7421-4417-ad91-32a8cdd97955
 		summarizeBy: none
 		sourceColumn: priority_key
 
 	column Priority
 		dataType: string
-		lineageTag: a89d393a-e59d-4866-bde7-f4413036b7e9
+		lineageTag: 629c2280-e227-4efe-87c8-1e18634f1593
 		summarizeBy: none
 		sourceColumn: priority_label
 		sortByColumn: priority_rank
 
 	column priority_rank
 		dataType: int64
-		lineageTag: 8f675f47-17fc-47ac-99a5-37197dc84552
+		lineageTag: 17ff4b7a-ba0e-45d9-8ed0-4da9a82c9e88
 		summarizeBy: none
 		sourceColumn: priority_rank
 
 	column is_high_priority
 		dataType: boolean
-		lineageTag: 50a83710-e847-4f6b-94cc-b194aa48892b
+		lineageTag: 5ad81176-cc0e-4cd9-a87c-8d24f3027dbd
 		summarizeBy: none
 		sourceColumn: is_high_priority
 

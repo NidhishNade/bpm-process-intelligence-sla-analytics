@@ -1,22 +1,22 @@
 table dim_contact_type
-	lineageTag: 3048c14f-7327-473b-9b33-1c3e1529728c
+	lineageTag: 589d0b39-8b7f-4dab-98b8-cec33d29b8fd
 
 	column contact_type_key
 		dataType: int64
 		isHidden
-		lineageTag: 590f9982-3dd2-4179-a7e6-519e51fc5c90
+		lineageTag: 5f89bb5d-fa74-4666-a3c4-9f0c70750492
 		summarizeBy: none
 		sourceColumn: contact_type_key
 
 	column 'Contact Type'
 		dataType: string
-		lineageTag: 2565ba6e-36f6-4a5e-8a3d-9226d0b03c75
+		lineageTag: 87384052-9858-4428-988b-4df3d0e05a45
 		summarizeBy: none
 		sourceColumn: contact_type_name
 
 	column is_self_service
 		dataType: boolean
-		lineageTag: cafc577b-5277-4c9d-bc76-fcf8166e1d30
+		lineageTag: 1cba7b4e-b7d2-40b2-a0bb-78c5af6dbe1d
 		summarizeBy: none
 		sourceColumn: is_self_service
 

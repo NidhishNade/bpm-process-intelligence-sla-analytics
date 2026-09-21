@@ -1,18 +1,18 @@
 table dim_date
 	dataCategory: Time
-	lineageTag: 15d8488c-1dac-4a5f-a8b8-ac65e031a80d
+	lineageTag: aa6914d5-c42d-48b2-9f59-0f8eb7b52452
 
 	column date_key
 		dataType: int64
 		isHidden
-		lineageTag: 0ef5045e-082f-45eb-aa57-a0b408189cdc
+		lineageTag: 58a614be-becf-4f08-b83b-276c0104e0cd
 		summarizeBy: none
 		sourceColumn: date_key
 
 	column Date
 		dataType: dateTime
 		isKey
-		lineageTag: 71acd931-0759-4742-8de0-05cbf025ffa8
+		lineageTag: a63f8e3d-b4dc-4372-b0b0-a201507b0b5d
 		summarizeBy: none
 		sourceColumn: date_value
 		formatString: yyyy-mm-dd hh:nn:ss
@@ -20,55 +20,55 @@ table dim_date
 
 	column Year
 		dataType: int64
-		lineageTag: 2936e0e3-16a9-4c3f-817d-63d25dd2b63f
+		lineageTag: 6c7cc7ea-5afb-4546-bd64-f65f8c40a0c8
 		summarizeBy: none
 		sourceColumn: calendar_year
 
 	column Quarter
 		dataType: int64
-		lineageTag: bc27407e-4aa3-4a14-915a-1ae67f595f6e
+		lineageTag: 86678b83-985c-4142-8fd3-2e076b5a9a1b
 		summarizeBy: none
 		sourceColumn: calendar_quarter
 
 	column calendar_month
 		dataType: int64
-		lineageTag: 09924ad5-f348-480d-95f3-ea28531a6b07
+		lineageTag: c7ca6f57-c852-4b1d-908e-dae83d8e2ed0
 		summarizeBy: none
 		sourceColumn: calendar_month
 
 	column Month
 		dataType: string
-		lineageTag: ae6d551a-ddc0-4729-b944-b223f889e59f
+		lineageTag: 6594b0a1-303b-4259-ac28-f17c9bac5b88
 		summarizeBy: none
 		sourceColumn: month_name
 
 	column 'Year-Month'
 		dataType: string
-		lineageTag: 14631de4-970b-4943-bd2d-7b1ccff5b9ff
+		lineageTag: 907f6df5-ff2f-40e8-9b34-5f9fb8435c1e
 		summarizeBy: none
 		sourceColumn: year_month
 
 	column day_of_month
 		dataType: int64
-		lineageTag: 69087085-8f5b-49be-bc62-327bfaa5d7a5
+		lineageTag: c48b06e2-a05f-48d9-9ade-4d3b0df51d5e
 		summarizeBy: none
 		sourceColumn: day_of_month
 
 	column day_of_week_num
 		dataType: int64
-		lineageTag: e9cecd17-02ec-4304-b09b-73d02cfea58b
+		lineageTag: 5f343ee4-a2cc-4d4f-a80b-bb4dd8c2599a
 		summarizeBy: none
 		sourceColumn: day_of_week_num
 
 	column Day
 		dataType: string
-		lineageTag: 18d6b374-cf73-497a-915f-63ed0c0c489a
+		lineageTag: dc895859-fc24-42ed-8d84-d4afcfe611b7
 		summarizeBy: none
 		sourceColumn: day_name
 
 	column is_weekend
 		dataType: boolean
-		lineageTag: 1c2ea744-1caa-41fb-94b4-5238f04d750b
+		lineageTag: 603dffa4-3488-4a49-b038-5c0666105552
 		summarizeBy: none
 		sourceColumn: is_weekend
 

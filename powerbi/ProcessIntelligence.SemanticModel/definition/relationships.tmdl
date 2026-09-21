@@ -1,48 +1,48 @@
-relationship 487a643d-6578-47ff-9f8e-970d43e995e2
+relationship 5d339aba-a33c-4345-9b02-4296e48f7214
 	fromColumn: fact_incident_case.priority_key
 	toColumn: dim_priority.priority_key
 
-relationship 5d9ed103-7da6-41eb-9125-d1b1f731fafd
+relationship 6577c715-bb97-4c5c-9047-c96ae8279ac2
 	isActive: false
 	fromColumn: fact_incident_case.final_state_key
 	toColumn: dim_state.state_key
 
-relationship 9ed98302-6efd-4133-868f-a6daafa4bf6e
+relationship 427a6ab1-414d-49e7-a212-093cc2ec1410
 	fromColumn: fact_incident_case.assignment_group_key
 	toColumn: dim_assignment_group.assignment_group_key
 
-relationship 1eef172a-cfbd-4e7e-b088-3bcd95c858cd
+relationship b0362481-f3f3-4a10-8a1e-164751909773
 	fromColumn: fact_incident_case.category_key
 	toColumn: dim_category.category_key
 
-relationship 2c4c378d-a72a-470b-b2e9-418d1798a4af
+relationship 8f7995f4-6d3d-48f0-8099-2b81a34e7c55
 	fromColumn: fact_incident_case.contact_type_key
 	toColumn: dim_contact_type.contact_type_key
 
-relationship 846ce7db-62d7-4da5-a42d-7b6a091d095c
+relationship 77b29044-81f5-47da-b9ad-a895ba2e1c69
 	fromColumn: fact_incident_case.location_key
 	toColumn: dim_location.location_key
 
-relationship 0ffda956-ba1d-40c8-a84c-67754e0f4d3f
+relationship 3beba421-bb95-4028-911c-21fe47763fd3
 	fromColumn: fact_incident_case.closed_code_key
 	toColumn: dim_closed_code.closed_code_key
 
-relationship b3cb7738-bab2-4d3d-a693-655aa15fed9f
+relationship 2c538165-aec8-40d0-bd79-236c396eee05
 	fromColumn: fact_incident_case.resolver_key
 	toColumn: dim_resolver.resolver_key
 
-relationship 5cffe726-7dbb-4adb-8de2-bceed49c581c
+relationship a3af5035-17e2-4517-b635-5af08dec563e
 	fromColumn: fact_incident_case.variant_key
 	toColumn: dim_variant.variant_key
 
-relationship 2968360d-bf03-4525-86bd-6904f86c10f7
+relationship b097cb58-6374-4eb6-9a0f-dbd7717a516d
 	fromColumn: fact_incident_case.opened_date_key
 	toColumn: dim_date.date_key
 
-relationship 896c1280-53a7-405f-b6be-39c10916790f
+relationship 92ab552f-1f12-4217-9d6c-115db0888ebb
 	fromColumn: fact_incident_event.case_key
 	toColumn: fact_incident_case.case_key
 
-relationship d3ab08a6-3318-44a2-b06d-089786b33f8f
+relationship aeea2841-93b4-43cc-bdab-9ae3ba07a77e
 	fromColumn: fact_incident_event.state_key
 	toColumn: dim_state.state_key

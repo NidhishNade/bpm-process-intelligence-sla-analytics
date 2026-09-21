@@ -1,16 +1,16 @@
 table dim_assignment_group
-	lineageTag: ed5b4b65-9210-4e53-9328-4197c60689ff
+	lineageTag: 252bb796-28c5-4907-b9ef-5f09ce4bc49b
 
 	column assignment_group_key
 		dataType: int64
 		isHidden
-		lineageTag: a559a744-bc7b-4d84-90f7-ecb9dc27583d
+		lineageTag: 8e37675b-290e-4dc1-b6aa-4779a0929e5e
 		summarizeBy: none
 		sourceColumn: assignment_group_key
 
 	column 'Assignment Group'
 		dataType: string
-		lineageTag: fffb275e-b0cc-49d8-89f9-297ef689cdf9
+		lineageTag: ce29ff91-b677-4beb-b9ab-fe30298a5687
 		summarizeBy: none
 		sourceColumn: assignment_group_name
 

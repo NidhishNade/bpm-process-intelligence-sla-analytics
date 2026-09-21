@@ -1,40 +1,40 @@
 table dim_variant
-	lineageTag: 7c0d823f-cfea-4bf4-9ce9-da782902f2a5
+	lineageTag: ecaa7eb2-4908-4926-8145-c0d8d286900c
 
 	column variant_key
 		dataType: int64
 		isHidden
-		lineageTag: 6123ccf5-93bc-45a7-9042-789f71a89957
+		lineageTag: 931c9a51-6f64-43b1-85f4-68bacf315ee7
 		summarizeBy: none
 		sourceColumn: variant_key
 
 	column 'Variant Path'
 		dataType: string
-		lineageTag: aa25b94f-26d8-4918-8790-78a2196cc937
+		lineageTag: c7e287ff-9a4e-4527-a09c-ed26d661eba3
 		summarizeBy: none
 		sourceColumn: variant_path
 
 	column 'Variant Length'
 		dataType: int64
-		lineageTag: db664f40-56a0-4090-a790-1707b2f84a5b
+		lineageTag: c3d074b7-a322-4c5b-b284-cb08da82b413
 		summarizeBy: none
 		sourceColumn: variant_length
 
 	column incident_count
 		dataType: int64
-		lineageTag: 877c9714-d98a-4fe6-85b2-d73f0a0f25af
+		lineageTag: b8b6ccff-7a3f-47bf-bd66-a20891d209e7
 		summarizeBy: none
 		sourceColumn: incident_count
 
 	column 'Variant Rank'
 		dataType: int64
-		lineageTag: 6a8dbe28-033d-4fe0-8c10-c91c81445b7c
+		lineageTag: e2da243a-a1a1-4f44-94a4-7c70238c9184
 		summarizeBy: none
 		sourceColumn: variant_rank
 
 	column is_happy_path
 		dataType: boolean
-		lineageTag: 9ede4181-34a0-478d-8195-f52513746b65
+		lineageTag: b3c10ebd-e50c-4f21-91d4-40cc830890d5
 		summarizeBy: none
 		sourceColumn: is_happy_path
 

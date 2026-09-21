@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "c25d6e4d6955486691e7",
+  "position": {
+    "x": 20,
+    "y": 160,
+    "z": 0,
+    "width": 620,
+    "height": 270,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Opened Hour"
+                }
+              },
+              "queryRef": "fact_incident_case.Opened Hour",
+              "nativeQueryRef": "Opened Hour"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Incidents"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Incidents",
+              "nativeQueryRef": "Total Incidents"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Incident Arrival by Hour of Day'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

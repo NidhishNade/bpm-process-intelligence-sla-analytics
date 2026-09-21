@@ -1,22 +1,22 @@
 table dim_category
-	lineageTag: d7ea4634-ba57-4021-92a6-7da90080ebfc
+	lineageTag: 5a9f7ee1-dd46-4e61-b938-d4094c1295f4
 
 	column category_key
 		dataType: int64
 		isHidden
-		lineageTag: 5a8599c8-1e4f-4232-8c06-f7efdba8d90d
+		lineageTag: 5f9568fe-e080-4cd8-936c-94baf16c85e9
 		summarizeBy: none
 		sourceColumn: category_key
 
 	column Category
 		dataType: string
-		lineageTag: 994ba8ec-b3fb-43c4-a76f-b2b90e9958a2
+		lineageTag: 0bea01fd-b5ee-40dc-9a6e-0c011ce736ac
 		summarizeBy: none
 		sourceColumn: category_name
 
 	column Subcategory
 		dataType: string
-		lineageTag: 61f26445-c4d0-4cb5-9869-967e2b7b852b
+		lineageTag: 187d4872-e535-4531-8b15-e001cfb5495d
 		summarizeBy: none
 		sourceColumn: subcategory_name
 
