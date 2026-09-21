@@ -179,7 +179,22 @@ folder.
 | 6. Time-Based Performance | Monthly, weekday and hour-of-day patterns |
 | 7. Incident Drill-through | Event-by-event trace of a single incident |
 
-Screenshots are in [`docs/images/`](docs/images/).
+### Executive Overview
+![Executive Overview](docs/images/01_executive.png)
+
+### Process Variants
+![Process Variants](docs/images/04_variants.png)
+
+<details>
+<summary>Other pages</summary>
+
+![Workflow Bottlenecks](docs/images/02_bottlenecks.png)
+![SLA & Operations](docs/images/03_sla.png)
+![Reassignment & Workload](docs/images/05_workload.png)
+![Time-Based Performance](docs/images/06_time.png)
+![Incident Drill-through](docs/images/07_drillthrough.png)
+
+</details>
 
 ---
 
