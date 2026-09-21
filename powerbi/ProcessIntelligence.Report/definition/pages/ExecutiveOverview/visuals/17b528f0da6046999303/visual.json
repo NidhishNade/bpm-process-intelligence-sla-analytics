@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "17b528f0da6046999303",
+  "position": {
+    "x": 650,
+    "y": 450,
+    "z": 0,
+    "width": 290,
+    "height": 250,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_priority"
+                    }
+                  },
+                  "Property": "Priority"
+                }
+              },
+              "queryRef": "dim_priority.Priority",
+              "nativeQueryRef": "Priority"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Priority'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

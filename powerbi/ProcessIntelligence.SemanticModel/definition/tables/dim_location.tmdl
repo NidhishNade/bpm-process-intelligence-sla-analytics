@@ -1,16 +1,16 @@
 table dim_location
-	lineageTag: a8b351d8-84f9-455c-b243-9bc648854058
+	lineageTag: 38c66f25-0a25-4d3e-9cbd-89188d3c9fec
 
 	column location_key
 		dataType: int64
 		isHidden
-		lineageTag: 3300c04e-7123-4374-b5c3-89b8f126b698
+		lineageTag: 55d1613a-380c-4342-b715-18f4fb9fe104
 		summarizeBy: none
 		sourceColumn: location_key
 
 	column Location
 		dataType: string
-		lineageTag: aa131ade-e069-4512-9003-4e2f3d9b173c
+		lineageTag: 24848563-c89e-4c1d-bb13-79299f4c7324
 		summarizeBy: none
 		sourceColumn: location_name
 

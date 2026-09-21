@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "3cea7cbb943e4ecbaad3",
+  "position": {
+    "x": 640,
+    "y": 20,
+    "z": 0,
+    "width": 290,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Breached"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Breached",
+              "nativeQueryRef": "SLA Breached"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SLA Breached'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

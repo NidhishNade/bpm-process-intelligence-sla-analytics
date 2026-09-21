@@ -1,16 +1,16 @@
 table dim_closed_code
-	lineageTag: b9904d4b-e8f0-4c9e-9507-d6a16a587461
+	lineageTag: 078fad10-a28e-4184-a618-cb2598816400
 
 	column closed_code_key
 		dataType: int64
 		isHidden
-		lineageTag: 30e819b8-efbf-417e-9ce3-093a0633cb81
+		lineageTag: 32b9442a-fce6-40f8-b108-66a8ea4e38eb
 		summarizeBy: none
 		sourceColumn: closed_code_key
 
 	column 'Closed Code'
 		dataType: string
-		lineageTag: bd2e8bd7-1e86-4567-a536-bd9ce980daa0
+		lineageTag: d2582f35-bb44-4e6c-a93b-36f581410cae
 		summarizeBy: none
 		sourceColumn: closed_code_name
 

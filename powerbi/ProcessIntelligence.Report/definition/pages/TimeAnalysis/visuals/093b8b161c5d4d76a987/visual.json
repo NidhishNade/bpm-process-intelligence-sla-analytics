@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "093b8b161c5d4d76a987",
+  "position": {
+    "x": 660,
+    "y": 160,
+    "z": 0,
+    "width": 600,
+    "height": 270,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_date"
+                    }
+                  },
+                  "Property": "Day"
+                }
+              },
+              "queryRef": "dim_date.Day",
+              "nativeQueryRef": "Day"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Incidents"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Incidents",
+              "nativeQueryRef": "Total Incidents"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Incident Arrival by Day of Week'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "373611d7a2f74673aaac",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "width": 760,
+    "height": 400,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_assignment_group"
+                    }
+                  },
+                  "Property": "Assignment Group"
+                }
+              },
+              "queryRef": "dim_assignment_group.Assignment Group",
+              "nativeQueryRef": "Assignment Group"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Incidents"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Incidents",
+              "nativeQueryRef": "Total Incidents"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Breached"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Breached",
+              "nativeQueryRef": "SLA Breached"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Attainment %"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Attainment %",
+              "nativeQueryRef": "SLA Attainment %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Resolution Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Resolution Hours",
+              "nativeQueryRef": "Median Resolution Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Avg Reassignments"
+                }
+              },
+              "queryRef": "fact_incident_case.Avg Reassignments",
+              "nativeQueryRef": "Avg Reassignments"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_incident_case"
+                  }
+                },
+                "Property": "Total Incidents"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SLA Performance by Assignment Group'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

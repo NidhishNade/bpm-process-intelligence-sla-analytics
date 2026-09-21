@@ -1,58 +1,58 @@
 table fact_incident_case
-	lineageTag: 862c4298-7846-4f50-83df-dce70bc5d93a
+	lineageTag: 99e4cf8e-04b9-4188-ac20-062dc0993051
 
 	/// Distinct incidents.
 	/// Counted at case grain, never event grain - the event table holds 141,707 rows for 24,918 incidents, so counting there would overstate volume roughly 5.7x.
 	measure 'Total Incidents' = COUNTROWS ( fact_incident_case )
 		formatString: #,0
-		lineageTag: 89e3ef86-91dd-408d-a0bc-cc497810f994
+		lineageTag: dc286c16-275a-416e-ae7b-f3213b8c26d1
 		displayFolder: 01 Volume
 
 	/// Process steps recorded across all incidents.
 	measure 'Total Events' = COUNTROWS ( fact_incident_event )
 		formatString: #,0
-		lineageTag: 4e9058fc-dca2-480d-a1c0-dfccaeea481e
+		lineageTag: 1e042fc1-90d1-4c7f-9607-232de61e4776
 		displayFolder: 01 Volume
 
 	/// Process touch count.
 	/// A rising value means more handling per incident.
 	measure 'Avg Events per Incident' = DIVIDE ( [Total Events], [Total Incidents] )
 		formatString: #,0.0
-		lineageTag: f88d16f5-05e0-4312-aa44-c628a6f26177
+		lineageTag: 53bee598-ab3e-4b2c-9b61-6d1ed7daad83
 		displayFolder: 01 Volume
 
 	/// Incidents whose final observed made_sla value was true.
 	/// Last-value semantics per DQ-09.
 	measure 'SLA Met' = SUM ( fact_incident_case[is_sla_met] )
 		formatString: #,0
-		lineageTag: 87bd0172-ba77-41c6-ada0-b1181fb9f241
+		lineageTag: 8fd7d219-c78c-4c74-b7cf-5a01919203f1
 		displayFolder: 02 SLA
 
 	/// Incidents whose final observed made_sla value was false.
 	measure 'SLA Breached' = SUM ( fact_incident_case[is_sla_breached] )
 		formatString: #,0
-		lineageTag: 1ea44e02-dd7f-4498-9859-1f7827e51d90
+		lineageTag: 37bf9ab0-86dd-4378-a1b4-a3cc17cffd5d
 		displayFolder: 02 SLA
 
 	/// Headline KPI.
 	/// Denominator is ALL incidents, not just resolved ones - excluding unresolved incidents would flatter the number by hiding the cases most likely to have breached.
 	measure 'SLA Attainment %' = DIVIDE ( [SLA Met], [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: 3843662c-68c5-4513-b131-939f55a84601
+		lineageTag: 505c5076-9c8c-4833-b78f-5595d88ec047
 		displayFolder: 02 SLA
 
 	/// Complement of attainment.
 	/// Held as its own measure so breach-focused visuals do not have to express 1 - x.
 	measure 'SLA Breach %' = DIVIDE ( [SLA Breached], [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: 4ba6d44a-ec4a-4459-b410-10ea915d0ff3
+		lineageTag: 4b58cc35-715c-49fb-beda-37d20e4afee9
 		displayFolder: 02 SLA
 
 	/// Prior-month attainment.
 	/// Requires dim_date to be marked as the date table.
 	measure 'SLA Attainment % PM' = CALCULATE ( [SLA Attainment %], DATEADD ( dim_date[Date], -1, MONTH ) )
 		formatString: 0.0%
-		lineageTag: 1b261853-ba19-4867-8bea-2973b69561ba
+		lineageTag: f02cbb18-b96a-49db-8da9-a1554be688d2
 		displayFolder: 02 SLA
 
 	/// Month-over-month change in percentage points.
@@ -62,14 +62,14 @@ table fact_incident_case
 				VAR Prior = [SLA Attainment % PM]
 				RETURN IF ( NOT ISBLANK ( Prior ), Current - Prior )
 		formatString: +0.0%;-0.0%;0.0%
-		lineageTag: 89902c97-bcc6-4975-8bb7-6cd017024597
+		lineageTag: a627eb30-d9a8-4d46-805e-2691cff1df46
 		displayFolder: 02 SLA
 
 	/// The cycle-time denominator.
 	/// Shown on the report so the audience can see how many incidents the duration KPIs are actually based on.
 	measure 'Incidents with Valid Cycle Time' = SUM ( fact_incident_case[has_valid_resolution_time] )
 		formatString: #,0
-		lineageTag: 3a743e1f-0d3a-470e-b4f1-911bf585e4ac
+		lineageTag: 95520c1c-6e9c-44b0-8e70-d5bdee0f6034
 		displayFolder: 03 Cycle Time
 
 	/// Primary cycle-time KPI.
@@ -80,7 +80,7 @@ table fact_incident_case
 				    fact_incident_case[has_valid_resolution_time] = 1
 				)
 		formatString: #,0.0
-		lineageTag: bad8fe04-af8d-44b0-b710-07dc7c4beb3b
+		lineageTag: d38bc5e4-c0b6-4076-990a-217952a92c7e
 		displayFolder: 03 Cycle Time
 
 	/// Retained alongside the median so the skew is visible rather than hidden.
@@ -90,13 +90,13 @@ table fact_incident_case
 				    fact_incident_case[has_valid_resolution_time] = 1
 				)
 		formatString: #,0.0
-		lineageTag: 4756ee8d-428a-494c-8202-80aa6666114c
+		lineageTag: 723f39ff-0183-47a0-bdf3-0b1a21cf674d
 		displayFolder: 03 Cycle Time
 
 	/// Same measure in the unit business stakeholders tend to think in.
 	measure 'Median Resolution Days' = DIVIDE ( [Median Resolution Hours], 24 )
 		formatString: #,0.0
-		lineageTag: 3ab5813f-536c-4d21-9701-64ca4bab862e
+		lineageTag: a2d1d20d-0c4a-450f-a788-14e3884f94c8
 		displayFolder: 03 Cycle Time
 
 	/// Tail risk.
@@ -107,46 +107,46 @@ table fact_incident_case
 				    fact_incident_case[has_valid_resolution_time] = 1
 				)
 		formatString: #,0.0
-		lineageTag: 74e15b9f-d7a1-4502-8d31-07b0f3059d35
+		lineageTag: 9d0529ef-02b2-4c80-9658-b597f4a0501a
 		displayFolder: 03 Cycle Time
 
 	/// Total elapsed time accumulated in the filtered states.
 	/// Nulls (the final event of each case, which has no successor) are ignored by SUM, which is the correct behaviour - that time is genuinely unmeasured, not zero.
 	measure 'Total Dwell Hours' = SUM ( fact_incident_event[Dwell Hours] )
 		formatString: #,0
-		lineageTag: 06f04894-7afa-498b-9898-2e2cf50da76a
+		lineageTag: ee99aac1-4625-4b49-95b2-9f1301c61457
 		displayFolder: 04 Bottleneck
 
 	/// Mean time an incident sits in a state before moving on.
 	measure 'Avg Dwell Hours' = AVERAGE ( fact_incident_event[Dwell Hours] )
 		formatString: #,0.0
-		lineageTag: 15900347-dce7-4a28-a118-f450c3bef760
+		lineageTag: 68a8f18c-9549-4382-a35d-3986ee340b28
 		displayFolder: 04 Bottleneck
 
 	/// Typical dwell.
 	/// Diverges sharply from the mean in the Active state, which is the signal that a minority of incidents are stalling there.
 	measure 'Median Dwell Hours' = MEDIAN ( fact_incident_event[Dwell Hours] )
 		formatString: #,0.0
-		lineageTag: 61bb845f-7cae-470b-8944-54d059ea70b4
+		lineageTag: 3d5d26bb-1fc6-4548-9e0b-a2184b89a2bf
 		displayFolder: 04 Bottleneck
 
 	/// Elapsed time blocked on a third party: user, vendor, problem or evidence.
 	measure 'Waiting Hours' = CALCULATE ( [Total Dwell Hours], dim_state[State Category] = "Waiting" )
 		formatString: #,0
-		lineageTag: cc8fc524-5584-4872-a3b2-a15745c915c5
+		lineageTag: 666b9a32-c947-4542-b234-1cd41533ab67
 		displayFolder: 04 Bottleneck
 
 	/// Elapsed time in New or Active, where the resolver team holds the work.
 	measure 'Working Hours' = CALCULATE ( [Total Dwell Hours], dim_state[State Category] = "Working" )
 		formatString: #,0
-		lineageTag: 8206b93d-49e7-41c2-9fc3-fc161a8e2fe6
+		lineageTag: aa5de3ad-1011-4653-9d66-8448b32ad9a6
 		displayFolder: 04 Bottleneck
 
 	/// Share of elapsed time the process is blocked.
 	/// Separates a capacity problem (fix by adding people) from a dependency problem (fix by changing the process).
 	measure 'Waiting Time %' = DIVIDE ( [Waiting Hours], [Total Dwell Hours] )
 		formatString: 0.0%
-		lineageTag: 481248b7-bb03-45e5-a157-e6ea2aaf48b7
+		lineageTag: 4be0908e-4cdd-45ba-8ddb-b8d09e9a9f88
 		displayFolder: 04 Bottleneck
 
 	/// Each state's share of total elapsed time.
@@ -157,64 +157,64 @@ table fact_incident_case
 				    CALCULATE ( [Total Dwell Hours], REMOVEFILTERS ( dim_state ) )
 				)
 		formatString: 0.0%
-		lineageTag: 13d243c9-f4ae-4eca-81bd-508ce51da615
+		lineageTag: 17ff0d8c-c021-42ac-b867-8c457ef30f9b
 		displayFolder: 04 Bottleneck
 
 	/// Incidents handed between groups at least once.
 	measure 'Reassigned Incidents' = SUM ( fact_incident_case[is_reassigned] )
 		formatString: #,0
-		lineageTag: 380e4e49-e159-4fa5-95ab-5bab71fd0fed
+		lineageTag: 7bc7b2ab-ddc9-4501-8bd4-1fc57337442b
 		displayFolder: 05 Workload
 
 	/// Routing accuracy proxy.
 	/// A high rate means work is not reaching the right team first time.
 	measure 'Reassignment Rate %' = DIVIDE ( [Reassigned Incidents], [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: a0bcabae-0345-462b-8266-f3c5601eceb4
+		lineageTag: 96632b76-4c46-4035-90bf-916a2f57b7a5
 		displayFolder: 05 Workload
 
 	/// Mean handoffs per incident.
 	measure 'Avg Reassignments' = AVERAGE ( fact_incident_case[Reassignment Count] )
 		formatString: #,0.00
-		lineageTag: 5915c7a3-3c67-4878-b9ff-b969d4ac804d
+		lineageTag: 9725c22d-f307-409b-ab45-dbd63a4f220b
 		displayFolder: 05 Workload
 
 	/// Absolute handoff volume - the size of the rework pool.
 	measure 'Total Reassignments' = SUM ( fact_incident_case[Reassignment Count] )
 		formatString: #,0
-		lineageTag: c6b18fa3-9441-4989-b156-c14d65f9542e
+		lineageTag: bda8ab9e-8bcb-4cee-bc4c-d81db5baf2bb
 		displayFolder: 05 Workload
 
 	/// Incidents reopened at least once after being resolved.
 	measure 'Reopened Incidents' = SUM ( fact_incident_case[is_reopened] )
 		formatString: #,0
-		lineageTag: 1e5d28f3-234c-4897-a3f0-455c6bec843d
+		lineageTag: 11a0e349-57a7-4adc-a5dc-297d7ceeeac1
 		displayFolder: 06 Quality
 
 	/// First-time-fix failure rate.
 	/// The cleanest available proxy for resolution quality as opposed to resolution speed.
 	measure 'Reopen Rate %' = DIVIDE ( [Reopened Incidents], [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: 811cecf8-e218-4d84-abb0-200b718a648e
+		lineageTag: 28321361-32d2-4892-83f4-c734673d39b1
 		displayFolder: 06 Quality
 
 	/// Share of incidents resolved with a knowledge article attached.
 	measure 'Knowledge Article Usage %' = DIVIDE ( SUM ( fact_incident_case[used_knowledge_article] ), [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: c7288731-53b4-4375-84b8-7f3bf420e76c
+		lineageTag: ed9e6554-cde1-4fae-80c8-acfa517480bb
 		displayFolder: 06 Quality
 
 	/// Number of distinct routing paths in the filtered population.
 	/// Process complexity in a single number.
 	measure 'Distinct Variants' = DISTINCTCOUNT ( fact_incident_case[variant_key] )
 		formatString: #,0
-		lineageTag: 48f01bf7-2eaa-44b2-9ffb-ffa937bf5fd6
+		lineageTag: 9520816f-6074-4743-9bfc-e59225e37ddc
 		displayFolder: 07 Process Variants
 
 	/// Incidents following the single most frequent path.
 	measure 'Happy Path Incidents' = CALCULATE ( [Total Incidents], dim_variant[Variant Rank] = 1 )
 		formatString: #,0
-		lineageTag: 545d597b-e8a4-4c4a-bc0c-ed778b3a95b5
+		lineageTag: 1400a1e4-3d28-409f-9713-91df118da7c0
 		displayFolder: 07 Process Variants
 
 	/// Process conformance.
@@ -225,7 +225,7 @@ table fact_incident_case
 				    CALCULATE ( [Total Incidents], REMOVEFILTERS ( dim_variant ) )
 				)
 		formatString: 0.0%
-		lineageTag: ff9c3332-ce3c-4e9c-b4e8-e1bc41dcbecd
+		lineageTag: 9d36fd4d-495a-4cef-9e58-5079477a3bb0
 		displayFolder: 07 Process Variants
 
 	/// Share of volume on the five dominant paths - the standardised core of the process.
@@ -235,13 +235,13 @@ table fact_incident_case
 				    CALCULATE ( [Total Incidents], REMOVEFILTERS ( dim_variant ) )
 				)
 		formatString: 0.0%
-		lineageTag: 6f3c1811-c0b6-41a0-aded-7d9261007355
+		lineageTag: 45255703-fd50-4101-97fe-9b1b4532ff85
 		displayFolder: 07 Process Variants
 
 	/// Share of demand arriving outside 08:00-18:00 Mon-Fri.
 	measure 'Out of Hours %' = DIVIDE ( SUM ( fact_incident_case[opened_out_of_hours] ), [Total Incidents] )
 		formatString: 0.0%
-		lineageTag: ff40675e-0860-4c1e-a067-9130518c97aa
+		lineageTag: cf78c947-f1cc-48d5-85ef-a51093cbc97f
 		displayFolder: 08 Demand
 
 	/// Title text for the drill-through page.
@@ -251,114 +251,114 @@ table fact_incident_case
 				    fact_incident_case[Incident Number],
 				    "Select a single incident to drill through"
 				)
-		lineageTag: 4582e24d-18ca-442c-bc93-9a0fb10636a0
+		lineageTag: aa032bee-bf0c-4dab-9940-7139f38834f6
 		displayFolder: 09 Drill-through
 
 	column case_key
 		dataType: int64
 		isHidden
-		lineageTag: f889500d-f9b9-4b96-affb-515336e50195
+		lineageTag: 7b6db610-7f1a-458d-bfc8-0d0f81749701
 		summarizeBy: none
 		sourceColumn: case_key
 
 	column 'Incident Number'
 		dataType: string
-		lineageTag: 520facb7-3ba9-4984-b83f-2af889a37541
+		lineageTag: 74273424-bf8e-49b4-9066-a6f556405ca3
 		summarizeBy: none
 		sourceColumn: incident_number
 
 	column priority_key
 		dataType: int64
 		isHidden
-		lineageTag: 7029739b-76b3-421c-9730-2eba84b6f200
+		lineageTag: fd74cc3b-3189-475e-812b-a6d5889f3322
 		summarizeBy: none
 		sourceColumn: priority_key
 
 	column final_state_key
 		dataType: int64
 		isHidden
-		lineageTag: e7738e0f-b011-43b6-ab2f-e7ec91c3ce71
+		lineageTag: 2703f1f8-be21-4dfd-bcc6-7f0cdb810d25
 		summarizeBy: none
 		sourceColumn: final_state_key
 
 	column assignment_group_key
 		dataType: int64
 		isHidden
-		lineageTag: acf6bbf9-7224-44d5-8f63-a1ea9ca83a81
+		lineageTag: 9dd889a7-628f-4a0b-91aa-c96fbc4ab959
 		summarizeBy: none
 		sourceColumn: assignment_group_key
 
 	column category_key
 		dataType: int64
 		isHidden
-		lineageTag: ab61bf2b-c925-480a-b181-f97bd683e97a
+		lineageTag: ce8f7154-223d-4945-9b0f-e320ffc2536b
 		summarizeBy: none
 		sourceColumn: category_key
 
 	column contact_type_key
 		dataType: int64
 		isHidden
-		lineageTag: e23fa556-9518-4075-8d09-0a8e0f30cb1f
+		lineageTag: 29f5cf92-aca9-44e3-8dba-df5aa353d304
 		summarizeBy: none
 		sourceColumn: contact_type_key
 
 	column location_key
 		dataType: int64
 		isHidden
-		lineageTag: d098c0f5-c4d4-488c-a517-4937f33d0cf0
+		lineageTag: b9fd1f8c-ef64-44c3-b59a-eeb54400fd54
 		summarizeBy: none
 		sourceColumn: location_key
 
 	column closed_code_key
 		dataType: int64
 		isHidden
-		lineageTag: 2e6a8fb6-4d57-4713-9188-4f50fa898b2e
+		lineageTag: 13b5765c-887b-482b-9374-aba1a2b8662e
 		summarizeBy: none
 		sourceColumn: closed_code_key
 
 	column resolver_key
 		dataType: int64
 		isHidden
-		lineageTag: a19eece4-13f2-4b97-85e5-f3b00f9061e9
+		lineageTag: 749bfb45-5b7f-48c4-80db-d071e10c1438
 		summarizeBy: none
 		sourceColumn: resolver_key
 
 	column variant_key
 		dataType: int64
 		isHidden
-		lineageTag: dc9a3a9b-dd4c-4dc6-8daf-699753f5db87
+		lineageTag: d0afb754-1490-4d9d-a521-0e55fa79b0ab
 		summarizeBy: none
 		sourceColumn: variant_key
 
 	column opened_date_key
 		dataType: int64
 		isHidden
-		lineageTag: 8c7b14f0-52f5-44e7-aacf-ac1891df5a59
+		lineageTag: 34ab5cec-1c88-4e33-8e5b-c447363efc24
 		summarizeBy: none
 		sourceColumn: opened_date_key
 
 	column resolved_date_key
 		dataType: int64
 		isHidden
-		lineageTag: d7641f93-e7a8-4daf-96b4-6e2df8e43914
+		lineageTag: e10fa173-6875-4c93-a9f0-e7d33c55f54e
 		summarizeBy: none
 		sourceColumn: resolved_date_key
 
 	column impact
 		dataType: string
-		lineageTag: 24c19113-56f7-41a5-93e0-0c68f7acf351
+		lineageTag: 4af70358-20fa-4ed3-ac42-3daf4839017d
 		summarizeBy: none
 		sourceColumn: impact
 
 	column urgency
 		dataType: string
-		lineageTag: 9574c342-e032-46f0-9b91-1fac3bea022b
+		lineageTag: 06376b76-329a-4f65-b1c5-4fab7abd70c4
 		summarizeBy: none
 		sourceColumn: urgency
 
 	column 'Opened At'
 		dataType: dateTime
-		lineageTag: 69882bac-865a-4c28-8156-44850eca4f97
+		lineageTag: 089e1040-e55f-44a2-917e-c1c7f6a33f5e
 		summarizeBy: none
 		sourceColumn: opened_at
 		formatString: yyyy-mm-dd hh:nn:ss
@@ -366,7 +366,7 @@ table fact_incident_case
 
 	column 'Resolved At'
 		dataType: dateTime
-		lineageTag: 05d19593-5e85-41e9-b634-c00969dd552f
+		lineageTag: a9ba2f14-0a64-46ce-af52-7d45e88f8bd3
 		summarizeBy: none
 		sourceColumn: resolved_at
 		formatString: yyyy-mm-dd hh:nn:ss
@@ -374,103 +374,103 @@ table fact_incident_case
 
 	column 'Event Count'
 		dataType: int64
-		lineageTag: ead11e61-846b-4999-a681-d515a98623c3
+		lineageTag: cc874459-0433-4183-8467-c27d5c0f0749
 		summarizeBy: none
 		sourceColumn: event_count
 
 	column 'Reassignment Count'
 		dataType: int64
-		lineageTag: 35da9c0b-8866-4af9-8f52-3e0f4ec5f37c
+		lineageTag: d071bc59-e909-47f6-9674-005750196cdd
 		summarizeBy: none
 		sourceColumn: reassignment_count
 
 	column 'Reopen Count'
 		dataType: int64
-		lineageTag: 5605ffae-a3e6-47b3-bc14-5036722147e4
+		lineageTag: b945462c-99f0-4441-81d8-3de5eadf30b5
 		summarizeBy: none
 		sourceColumn: reopen_count
 
 	column modification_count
 		dataType: int64
-		lineageTag: 37aab8db-d795-4c19-a9eb-5a6263af124e
+		lineageTag: c7d7651d-057e-48b2-8dd5-2b6df966f078
 		summarizeBy: none
 		sourceColumn: modification_count
 
 	column 'Resolution Hours'
 		dataType: double
-		lineageTag: 17d6b153-f2a7-4f00-8616-73c11acd29b4
+		lineageTag: dc17a2bb-277d-4374-9f94-4ccf40cdd65d
 		summarizeBy: none
 		sourceColumn: resolution_hours
 
 	column hours_in_working_states
 		dataType: double
-		lineageTag: 3e784f19-b73f-4692-9864-a5808b0de0d3
+		lineageTag: 6f8ff296-e29f-47e9-81db-ee57b3bd34fa
 		summarizeBy: none
 		sourceColumn: hours_in_working_states
 
 	column hours_in_waiting_states
 		dataType: double
-		lineageTag: c779bc15-24e2-4647-b187-ce9284967053
+		lineageTag: 6573f4cc-dcef-48ab-a70d-482dfdb90610
 		summarizeBy: none
 		sourceColumn: hours_in_waiting_states
 
 	column is_sla_met
 		dataType: int64
-		lineageTag: 6de58a16-47c7-4876-b265-4ec983bc6215
+		lineageTag: 08ba5854-f267-416a-8359-81e25634cfa5
 		summarizeBy: none
 		sourceColumn: is_sla_met
 
 	column is_sla_breached
 		dataType: int64
-		lineageTag: 8a78a1fb-3660-439c-976b-4b21549541ee
+		lineageTag: 17b3db4b-d0ec-4103-8c25-65831e78cb8d
 		summarizeBy: none
 		sourceColumn: is_sla_breached
 
 	column is_reopened
 		dataType: int64
-		lineageTag: b2743d68-cd49-464e-a204-8ff2e6fb1153
+		lineageTag: eb8ff007-2825-4098-827d-87431bfbaea2
 		summarizeBy: none
 		sourceColumn: is_reopened
 
 	column is_reassigned
 		dataType: int64
-		lineageTag: 55572559-9cb2-4380-ad95-206091773829
+		lineageTag: 7e716c5a-60af-4a3e-b730-43c64ceac180
 		summarizeBy: none
 		sourceColumn: is_reassigned
 
 	column is_resolved
 		dataType: int64
-		lineageTag: 6c68732d-0c1c-46ca-a3b5-ccdaa1f77265
+		lineageTag: b99dee00-2e52-45bb-97ec-b83a1b4b1f75
 		summarizeBy: none
 		sourceColumn: is_resolved
 
 	column has_valid_resolution_time
 		dataType: int64
-		lineageTag: 952c9025-062e-4d73-8d2e-ccc1879f4e4e
+		lineageTag: 49026977-0244-46f1-a754-78de0aa0e0ed
 		summarizeBy: none
 		sourceColumn: has_valid_resolution_time
 
 	column used_knowledge_article
 		dataType: int64
-		lineageTag: c442c489-b320-4f42-839c-560ab2382558
+		lineageTag: 613e61a3-8488-4579-bf67-85db35018ef8
 		summarizeBy: none
 		sourceColumn: used_knowledge_article
 
 	column opened_out_of_hours
 		dataType: int64
-		lineageTag: 024504e5-3fc4-4609-9a82-1410479ebc2e
+		lineageTag: 0c508758-ab55-4731-ae7d-5572e96347d5
 		summarizeBy: none
 		sourceColumn: opened_out_of_hours
 
 	column 'Opened Hour'
 		dataType: int64
-		lineageTag: 18f4146a-0108-45be-8017-80609aaf3b8e
+		lineageTag: 6e62a3b3-5488-4687-be16-0aa72c79cb2c
 		summarizeBy: none
 		sourceColumn: opened_hour
 
 	column opened_day_of_week
 		dataType: int64
-		lineageTag: 0173828d-76c0-48f5-a615-225e3ce10bd9
+		lineageTag: a2c854d2-80e8-4d1a-a2ef-2520b0bb6bc1
 		summarizeBy: none
 		sourceColumn: opened_day_of_week
 

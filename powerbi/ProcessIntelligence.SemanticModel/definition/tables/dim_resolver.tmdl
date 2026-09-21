@@ -1,16 +1,16 @@
 table dim_resolver
-	lineageTag: e105dc52-ce5d-48ee-90df-18cb88ca333b
+	lineageTag: cd9a23b0-5f69-460a-8841-1039e743b8b9
 
 	column resolver_key
 		dataType: int64
 		isHidden
-		lineageTag: 8f042613-1cb2-43e9-9864-7a4408a18332
+		lineageTag: 71b35da2-378f-45c0-990b-f4602cbf4e71
 		summarizeBy: none
 		sourceColumn: resolver_key
 
 	column Resolver
 		dataType: string
-		lineageTag: 3aa2022b-118b-4609-b343-559962cbc642
+		lineageTag: bc0734a6-a779-4f9e-8592-d65fa2bffe75
 		summarizeBy: none
 		sourceColumn: resolver_name
 

@@ -323,6 +323,10 @@ def render_table(table: str, columns: list[tuple[str, str]]) -> str:
             lines.append(f"{T}{T}sortByColumn: priority_rank")
         if table == "dim_state" and name == "state_name":
             lines.append(f"{T}{T}sortByColumn: state_sort_order")
+        if table == "dim_date" and name == "day_name":
+            lines.append(f"{T}{T}sortByColumn: day_of_week_num")
+        if table == "dim_date" and name == "month_name":
+            lines.append(f"{T}{T}sortByColumn: calendar_month")
 
         lines.append("")
 
@@ -429,7 +433,7 @@ def visual(
     entities: dict[str, str],
     select: list[dict],
     projections: dict[str, list[str]],
-    order_by: list[dict] | None = None,
+    sort: tuple[str, str] | None = None,
     z: int = 0,
 ) -> dict:
     """
@@ -444,7 +448,7 @@ def visual(
     restated, so a projection can only ever point at a field this visual
     actually queries.
     """
-    del entities, order_by  # PBIR addresses tables directly; sorting is left to the user.
+    del entities  # PBIR addresses tables directly by name.
 
     by_ref = {item["queryRef"]: item for item in select}
 
@@ -452,6 +456,17 @@ def visual(
     for role, refs in projections.items():
         query_state[role] = {
             "projections": [by_ref[qualify(ref)] for ref in refs]
+        }
+
+    # sort = (queryRef, "Ascending" | "Descending"). Only a field the visual
+    # already projects can be the sort key, so it is looked up in `select`:
+    # a typo fails here, at generation, not as a silently unsorted visual.
+    query: dict = {"queryState": query_state}
+    if sort:
+        ref, direction = sort
+        query["sortDefinition"] = {
+            "sort": [{"field": by_ref[qualify(ref)]["field"], "direction": direction}],
+            "isDefaultSort": True,
         }
 
     return {
@@ -462,7 +477,7 @@ def visual(
         },
         "visual": {
             "visualType": vtype,
-            "query": {"queryState": query_state},
+            "query": query,
             "drillFilterOtherVisuals": True,
             "visualContainerObjects": {
                 "title": [{
@@ -569,11 +584,7 @@ def build_pages() -> list[dict]:
                 "Category": ["dim_date.year_month"],
                 "Y": [f"{MEASURE_HOST_TABLE}.SLA Attainment %"],
             },
-            order_by=[{
-                "Direction": 1,
-                "Expression": {"Column": {
-                    "Expression": {"SourceRef": {"Source": "d"}}, "Property": "year_month"}},
-            }],
+            sort=("dim_date.year_month", "Ascending"),
         ),
         visual(
             "clusteredColumnChart", 650, 170, 610, 260,
@@ -606,6 +617,7 @@ def build_pages() -> list[dict]:
                 f"{MEASURE_HOST_TABLE}.SLA Attainment %",
                 f"{MEASURE_HOST_TABLE}.Median Resolution Hours",
             ]},
+            sort=(f"{MEASURE_HOST_TABLE}.Total Incidents", "Descending"),
         ),
         visual(
             "slicer", 650, 450, 290, 250,
@@ -702,6 +714,7 @@ def build_pages() -> list[dict]:
                 f"{MEASURE_HOST_TABLE}.Median Resolution Hours",
                 f"{MEASURE_HOST_TABLE}.Avg Reassignments",
             ]},
+            sort=(f"{MEASURE_HOST_TABLE}.Total Incidents", "Descending"),
         ),
         visual(
             "scatterChart", 800, 20, 460, 400,
@@ -730,6 +743,7 @@ def build_pages() -> list[dict]:
                 "Category": ["dim_closed_code.closed_code_name"],
                 "Y": [f"{MEASURE_HOST_TABLE}.SLA Attainment %"],
             },
+            sort=(f"{MEASURE_HOST_TABLE}.SLA Attainment %", "Descending"),
         ),
         visual(
             "clusteredColumnChart", 650, 440, 610, 260,
@@ -743,6 +757,7 @@ def build_pages() -> list[dict]:
                 "Category": ["dim_closed_code.closed_code_name"],
                 "Y": [f"{MEASURE_HOST_TABLE}.Reopen Rate %"],
             },
+            sort=(f"{MEASURE_HOST_TABLE}.Reopen Rate %", "Descending"),
         ),
     ]
     pages.append(page("SLAOperational", "3. SLA & Operations", p3, 2))
@@ -773,11 +788,7 @@ def build_pages() -> list[dict]:
                 f"{MEASURE_HOST_TABLE}.Median Resolution Hours",
                 f"{MEASURE_HOST_TABLE}.Avg Events per Incident",
             ]},
-            order_by=[{
-                "Direction": 1,
-                "Expression": {"Column": {
-                    "Expression": {"SourceRef": {"Source": "v"}}, "Property": "variant_rank"}},
-            }],
+            sort=(f"{MEASURE_HOST_TABLE}.Total Incidents", "Descending"),
         ),
         visual(
             "scatterChart", 20, 480, 620, 220,
@@ -849,6 +860,7 @@ def build_pages() -> list[dict]:
                 f"{MEASURE_HOST_TABLE}.SLA Attainment %",
                 f"{MEASURE_HOST_TABLE}.Median Resolution Hours",
             ]},
+            sort=(f"{MEASURE_HOST_TABLE}.Total Incidents", "Descending"),
         ),
         visual(
             "tableEx", 20, 460, 1240, 240,
@@ -870,6 +882,7 @@ def build_pages() -> list[dict]:
                 f"{MEASURE_HOST_TABLE}.Reopen Rate %",
                 f"{MEASURE_HOST_TABLE}.SLA Attainment %",
             ]},
+            sort=(f"{MEASURE_HOST_TABLE}.Total Incidents", "Descending"),
         ),
     ]
     pages.append(page("Workload", "5. Reassignment & Workload", p5, 4))
@@ -907,8 +920,10 @@ def build_pages() -> list[dict]:
             },
         ),
         visual(
-            "lineChart", 20, 450, 1240, 250,
-            title="Median Resolution Hours and Volume by Month",
+            # Combo, not a line chart: volume (thousands) and median hours
+            # (tens) on one axis flattens the hours line to zero.
+            "lineClusteredColumnComboChart", 20, 450, 1240, 250,
+            title="Volume (columns) and Median Resolution Hours (line) by Month",
             entities={F: "fact_incident_case", "d": "dim_date"},
             select=[
                 col("d", "dim_date", "year_month", "Year-Month"),
@@ -917,11 +932,10 @@ def build_pages() -> list[dict]:
             ],
             projections={
                 "Category": ["dim_date.year_month"],
-                "Y": [
-                    f"{MEASURE_HOST_TABLE}.Median Resolution Hours",
-                    f"{MEASURE_HOST_TABLE}.Total Incidents",
-                ],
+                "Y": [f"{MEASURE_HOST_TABLE}.Total Incidents"],
+                "Y2": [f"{MEASURE_HOST_TABLE}.Median Resolution Hours"],
             },
+            sort=("dim_date.year_month", "Ascending"),
         ),
     ]
     pages.append(page("TimeAnalysis", "6. Time-Based Performance", p6, 5))
@@ -950,11 +964,7 @@ def build_pages() -> list[dict]:
                 "dim_state.state_category",
                 "fact_incident_event.dwell_hours",
             ]},
-            order_by=[{
-                "Direction": 1,
-                "Expression": {"Column": {
-                    "Expression": {"SourceRef": {"Source": "e"}}, "Property": "event_seq"}},
-            }],
+            sort=("fact_incident_event.event_seq", "Ascending"),
         ),
         visual(
             "tableEx", 20, 440, 1240, 260,

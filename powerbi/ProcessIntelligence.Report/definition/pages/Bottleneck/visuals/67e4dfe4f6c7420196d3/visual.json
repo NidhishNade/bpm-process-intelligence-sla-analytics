@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "67e4dfe4f6c7420196d3",
+  "position": {
+    "x": 660,
+    "y": 160,
+    "z": 0,
+    "width": 600,
+    "height": 280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State Category"
+                }
+              },
+              "queryRef": "dim_state.State Category",
+              "nativeQueryRef": "State Category"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Dwell Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Dwell Hours",
+              "nativeQueryRef": "Total Dwell Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Working vs Waiting Time'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

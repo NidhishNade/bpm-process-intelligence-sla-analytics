@@ -1,35 +1,35 @@
 table dim_state
-	lineageTag: 1d645320-dead-45b8-a1d6-7f702dfb6a01
+	lineageTag: 6a6df96a-5540-4678-9302-afd9034ffdb6
 
 	column state_key
 		dataType: int64
 		isHidden
-		lineageTag: dec4cc73-8fac-40e4-9d99-2e5d8959d0fd
+		lineageTag: daef865d-eed4-4a35-b624-86a67021d6d1
 		summarizeBy: none
 		sourceColumn: state_key
 
 	column State
 		dataType: string
-		lineageTag: c9014530-b973-4426-bcc1-437e1aeb5c14
+		lineageTag: 756cb186-3434-41d8-ad26-770cadf9d7f3
 		summarizeBy: none
 		sourceColumn: state_name
 		sortByColumn: state_sort_order
 
 	column 'State Category'
 		dataType: string
-		lineageTag: 77bfe575-80ea-4be1-bb0f-10e9e6116f31
+		lineageTag: f15ac8ad-092f-4944-a2fb-c2fb243f589e
 		summarizeBy: none
 		sourceColumn: state_category
 
 	column state_sort_order
 		dataType: int64
-		lineageTag: 4a8d2b64-efab-49a8-9fcf-4837492eb519
+		lineageTag: 4b01f226-38bc-4f80-9977-a65662f9a958
 		summarizeBy: none
 		sourceColumn: state_sort_order
 
 	column is_waiting_state
 		dataType: boolean
-		lineageTag: c08f4243-79c4-4a76-a812-659dc178f875
+		lineageTag: 181a2899-925c-4cb8-aeb7-d853c3ea79d1
 		summarizeBy: none
 		sourceColumn: is_waiting_state
 

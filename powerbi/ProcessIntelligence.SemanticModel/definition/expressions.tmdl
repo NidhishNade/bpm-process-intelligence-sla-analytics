@@ -1,5 +1,5 @@
 expression DataFolder = "D:\\claude\\Business Intelligence Projects\\bpm-process-intelligence-sla-analytics\\data\\processed\\powerbi\\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: e0aa2f3c-d4b9-47d0-be9e-c4f8acfa7d21
+	lineageTag: fd433aa4-b527-49b9-8b65-599f2d113e81
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "e77db43c33664b48993c",
+  "position": {
+    "x": 20,
+    "y": 480,
+    "z": 0,
+    "width": 620,
+    "height": 220,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Path"
+                }
+              },
+              "queryRef": "dim_variant.Variant Path",
+              "nativeQueryRef": "Variant Path"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Avg Events per Incident"
+                }
+              },
+              "queryRef": "fact_incident_case.Avg Events per Incident",
+              "nativeQueryRef": "Avg Events per Incident"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Resolution Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Resolution Hours",
+              "nativeQueryRef": "Median Resolution Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Events per Incident vs Median Resolution Hours'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

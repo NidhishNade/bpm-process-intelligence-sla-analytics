@@ -1,48 +1,48 @@
-relationship 5d339aba-a33c-4345-9b02-4296e48f7214
+relationship b0150530-3fb5-4b72-bfb9-a9a00a638235
 	fromColumn: fact_incident_case.priority_key
 	toColumn: dim_priority.priority_key
 
-relationship 6577c715-bb97-4c5c-9047-c96ae8279ac2
+relationship 17230530-63bb-4f76-a2ca-043676c39033
 	isActive: false
 	fromColumn: fact_incident_case.final_state_key
 	toColumn: dim_state.state_key
 
-relationship 427a6ab1-414d-49e7-a212-093cc2ec1410
+relationship d1496437-d29f-4662-bb16-790fb4536a73
 	fromColumn: fact_incident_case.assignment_group_key
 	toColumn: dim_assignment_group.assignment_group_key
 
-relationship b0362481-f3f3-4a10-8a1e-164751909773
+relationship 6b1fe01e-4602-434c-8d6a-0c36f52c253c
 	fromColumn: fact_incident_case.category_key
 	toColumn: dim_category.category_key
 
-relationship 8f7995f4-6d3d-48f0-8099-2b81a34e7c55
+relationship 008ae45e-dbaf-4045-8dcd-6dc992c2e693
 	fromColumn: fact_incident_case.contact_type_key
 	toColumn: dim_contact_type.contact_type_key
 
-relationship 77b29044-81f5-47da-b9ad-a895ba2e1c69
+relationship 94a1071f-72c4-4699-a60f-f5be03d9bd0c
 	fromColumn: fact_incident_case.location_key
 	toColumn: dim_location.location_key
 
-relationship 3beba421-bb95-4028-911c-21fe47763fd3
+relationship 6326dc7a-0548-4891-a6d4-bda8bc167ddd
 	fromColumn: fact_incident_case.closed_code_key
 	toColumn: dim_closed_code.closed_code_key
 
-relationship 2c538165-aec8-40d0-bd79-236c396eee05
+relationship 17357982-e984-42ec-a247-7a3cbb70510a
 	fromColumn: fact_incident_case.resolver_key
 	toColumn: dim_resolver.resolver_key
 
-relationship a3af5035-17e2-4517-b635-5af08dec563e
+relationship fbdfbbc8-7c36-463a-96b3-add0be2c30af
 	fromColumn: fact_incident_case.variant_key
 	toColumn: dim_variant.variant_key
 
-relationship b097cb58-6374-4eb6-9a0f-dbd7717a516d
+relationship 2d00d034-e005-486d-aaa0-8d5877b56bfd
 	fromColumn: fact_incident_case.opened_date_key
 	toColumn: dim_date.date_key
 
-relationship 92ab552f-1f12-4217-9d6c-115db0888ebb
+relationship 91006119-4ef9-4763-a96f-6256b8e4c250
 	fromColumn: fact_incident_event.case_key
 	toColumn: fact_incident_case.case_key
 
-relationship aeea2841-93b4-43cc-bdab-9ae3ba07a77e
+relationship 7f9616fc-06cf-4fa1-b166-5a0ab293ffad
 	fromColumn: fact_incident_event.state_key
 	toColumn: dim_state.state_key

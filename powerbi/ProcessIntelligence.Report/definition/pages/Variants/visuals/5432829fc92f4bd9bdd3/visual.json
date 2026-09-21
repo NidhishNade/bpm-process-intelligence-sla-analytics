@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "5432829fc92f4bd9bdd3",
+  "position": {
+    "x": 20,
+    "y": 160,
+    "z": 0,
+    "width": 1240,
+    "height": 300,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Rank"
+                }
+              },
+              "queryRef": "dim_variant.Variant Rank",
+              "nativeQueryRef": "Rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Path"
+                }
+              },
+              "queryRef": "dim_variant.Variant Path",
+              "nativeQueryRef": "Variant Path"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Total Incidents"
+                }
+              },
+              "queryRef": "fact_incident_case.Total Incidents",
+              "nativeQueryRef": "Total Incidents"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "SLA Attainment %"
+                }
+              },
+              "queryRef": "fact_incident_case.SLA Attainment %",
+              "nativeQueryRef": "SLA Attainment %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Resolution Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Resolution Hours",
+              "nativeQueryRef": "Median Resolution Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Avg Events per Incident"
+                }
+              },
+              "queryRef": "fact_incident_case.Avg Events per Incident",
+              "nativeQueryRef": "Avg Events per Incident"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_incident_case"
+                  }
+                },
+                "Property": "Total Incidents"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Process Variants by Volume and Outcome'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
