@@ -1,0 +1,128 @@
+table fact_incident_event
+	lineageTag: 5cae1074-26b8-48f7-ab60-e270b5f3ea38
+
+	column event_key
+		dataType: int64
+		isHidden
+		lineageTag: cb5d9640-5d31-4135-bd0f-97d1b5413700
+		summarizeBy: none
+		sourceColumn: event_key
+
+	column case_key
+		dataType: int64
+		isHidden
+		lineageTag: 900a6d20-6cee-47f7-8cfd-e8e96f7fca2c
+		summarizeBy: none
+		sourceColumn: case_key
+
+	column 'Incident Number'
+		dataType: string
+		lineageTag: 8e6c839b-ffab-4c01-ad75-0e2e6b0f4eb9
+		summarizeBy: none
+		sourceColumn: incident_number
+
+	column state_key
+		dataType: int64
+		isHidden
+		lineageTag: 2005ea21-0c7c-4c3f-a6cd-b125c44f57d7
+		summarizeBy: none
+		sourceColumn: state_key
+
+	column next_state_key
+		dataType: int64
+		isHidden
+		lineageTag: 8cef6aa4-293d-4353-a7d9-8d558e3a5707
+		summarizeBy: none
+		sourceColumn: next_state_key
+
+	column priority_key
+		dataType: int64
+		isHidden
+		lineageTag: d5599dd3-5ba5-494f-af3b-e29642e942b7
+		summarizeBy: none
+		sourceColumn: priority_key
+
+	column assignment_group_key
+		dataType: int64
+		isHidden
+		lineageTag: 5fa983eb-83ac-434c-ae09-771b2b2e700f
+		summarizeBy: none
+		sourceColumn: assignment_group_key
+
+	column event_date_key
+		dataType: int64
+		isHidden
+		lineageTag: 0543406b-f6d3-4ef7-b124-a4c52e93332f
+		summarizeBy: none
+		sourceColumn: event_date_key
+
+	column 'Event Timestamp'
+		dataType: dateTime
+		lineageTag: b1eeeb11-ed2d-4ee9-9ed0-6b3177b74d66
+		summarizeBy: none
+		sourceColumn: event_timestamp
+		formatString: yyyy-mm-dd hh:nn:ss
+		annotation SummarizationSetBy = Automatic
+
+	column 'Event Sequence'
+		dataType: int64
+		lineageTag: 6b580772-b3ec-44b0-a41d-0b1f3e318a4e
+		summarizeBy: none
+		sourceColumn: event_seq
+
+	column events_in_case
+		dataType: int64
+		lineageTag: cbd8c7a1-fcf8-48f3-a68d-11f0eb8ab8e9
+		summarizeBy: none
+		sourceColumn: events_in_case
+
+	column dwell_minutes
+		dataType: double
+		lineageTag: 2b110f7b-e566-4c73-a5c4-06eae717116f
+		summarizeBy: none
+		sourceColumn: dwell_minutes
+
+	column 'Dwell Hours'
+		dataType: double
+		lineageTag: e680fb5d-f0e3-4af5-af10-1f8ef842aeba
+		summarizeBy: none
+		sourceColumn: dwell_hours
+
+	column is_first_event
+		dataType: int64
+		lineageTag: 592fb09e-4f32-4a12-bc7b-d3c703ea8a17
+		summarizeBy: none
+		sourceColumn: is_first_event
+
+	column is_last_event
+		dataType: int64
+		lineageTag: 1ac47963-36af-493a-9641-3eadf1e1637c
+		summarizeBy: none
+		sourceColumn: is_last_event
+
+	column is_waiting_event
+		dataType: int64
+		lineageTag: 48dec0a4-9e8b-4e2a-afa6-9789628c79a6
+		summarizeBy: none
+		sourceColumn: is_waiting_event
+
+	column event_hour
+		dataType: int64
+		lineageTag: c7bd63c8-0b00-415c-9c88-2fdf7d2ee381
+		summarizeBy: none
+		sourceColumn: event_hour
+
+	partition fact_incident_event = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(
+						File.Contents(DataFolder & "fact_incident_event.csv"),
+						[Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+					),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"event_key", Int64.Type}, {"case_key", Int64.Type}, {"incident_number", type text}, {"state_key", Int64.Type}, {"next_state_key", Int64.Type}, {"priority_key", Int64.Type}, {"assignment_group_key", Int64.Type}, {"event_date_key", Int64.Type}, {"event_timestamp", type datetime}, {"event_seq", Int64.Type}, {"events_in_case", Int64.Type}, {"dwell_minutes", type number}, {"dwell_hours", type number}, {"is_first_event", Int64.Type}, {"is_last_event", Int64.Type}, {"is_waiting_event", Int64.Type}, {"event_hour", Int64.Type}})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

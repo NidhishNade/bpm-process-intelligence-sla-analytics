@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.4.0/schema.json",
+  "name": "IncidentDetail",
+  "displayName": "7. Incident Drill-through",
+  "displayOption": "FitToPage",
+  "width": 1280,
+  "height": 720
+}

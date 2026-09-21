@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ProcessIntelligence"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4c503b48-58f4-40ec-a9e7-ab66a3f60d7c"
+  }
+}

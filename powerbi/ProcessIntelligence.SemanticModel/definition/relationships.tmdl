@@ -1,0 +1,48 @@
+relationship 487a643d-6578-47ff-9f8e-970d43e995e2
+	fromColumn: fact_incident_case.priority_key
+	toColumn: dim_priority.priority_key
+
+relationship 5d9ed103-7da6-41eb-9125-d1b1f731fafd
+	isActive: false
+	fromColumn: fact_incident_case.final_state_key
+	toColumn: dim_state.state_key
+
+relationship 9ed98302-6efd-4133-868f-a6daafa4bf6e
+	fromColumn: fact_incident_case.assignment_group_key
+	toColumn: dim_assignment_group.assignment_group_key
+
+relationship 1eef172a-cfbd-4e7e-b088-3bcd95c858cd
+	fromColumn: fact_incident_case.category_key
+	toColumn: dim_category.category_key
+
+relationship 2c4c378d-a72a-470b-b2e9-418d1798a4af
+	fromColumn: fact_incident_case.contact_type_key
+	toColumn: dim_contact_type.contact_type_key
+
+relationship 846ce7db-62d7-4da5-a42d-7b6a091d095c
+	fromColumn: fact_incident_case.location_key
+	toColumn: dim_location.location_key
+
+relationship 0ffda956-ba1d-40c8-a84c-67754e0f4d3f
+	fromColumn: fact_incident_case.closed_code_key
+	toColumn: dim_closed_code.closed_code_key
+
+relationship b3cb7738-bab2-4d3d-a693-655aa15fed9f
+	fromColumn: fact_incident_case.resolver_key
+	toColumn: dim_resolver.resolver_key
+
+relationship 5cffe726-7dbb-4adb-8de2-bceed49c581c
+	fromColumn: fact_incident_case.variant_key
+	toColumn: dim_variant.variant_key
+
+relationship 2968360d-bf03-4525-86bd-6904f86c10f7
+	fromColumn: fact_incident_case.opened_date_key
+	toColumn: dim_date.date_key
+
+relationship 896c1280-53a7-405f-b6be-39c10916790f
+	fromColumn: fact_incident_event.case_key
+	toColumn: fact_incident_case.case_key
+
+relationship d3ab08a6-3318-44a2-b06d-089786b33f8f
+	fromColumn: fact_incident_event.state_key
+	toColumn: dim_state.state_key

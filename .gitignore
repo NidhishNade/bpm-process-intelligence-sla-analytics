@@ -14,6 +14,10 @@ venv/
 # Power BI
 *.pbix.bak
 ~$*
+# Desktop writes these when a .pbip is opened. cache.abf is a full copy of
+# the imported data; localSettings.json is per-machine. Neither is source.
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
 
 # OS / editor
 Thumbs.db

@@ -175,15 +175,21 @@ def build_variants(events: pd.DataFrame) -> pd.DataFrame:
         )
         ev = ev.loc[~same_as_prev]
 
+    grouped = ev.groupby(cfg.CASE_ID, sort=False)[cfg.ACTIVITY]
     variants = (
-        ev.groupby(cfg.CASE_ID, sort=False)[cfg.ACTIVITY]
-        .agg(lambda s: cfg.VARIANT_SEPARATOR.join(s))
+        grouped.agg(lambda s: cfg.VARIANT_SEPARATOR.join(s))
         .rename("variant_path")
         .reset_index()
     )
+    # Count states directly rather than inferring the count from separators in
+    # the joined string. Deriving it from the string is both fragile (the
+    # separator is regex-interpreted by str.count) and redundant - the states
+    # are right here.
+    # Mapped by case id rather than by position, so the two aggregations cannot
+    # be silently misaligned by a future change to grouping order.
     variants["variant_length"] = (
-        variants["variant_path"].str.count(cfg.VARIANT_SEPARATOR.strip()) // 2 + 1
-    ).astype("int16")
+        variants[cfg.CASE_ID].map(grouped.size()).astype("int16")
+    )
     return variants
 
 
@@ -353,6 +359,18 @@ def validate(events: pd.DataFrame, case: pd.DataFrame, raw_rows: int, audit: dic
         "variant assigned",
         case["variant_path"].notna().all(),
         f"{case['variant_path'].nunique():,} distinct process variants found",
+    )
+    # variant_length must equal the number of states actually in variant_path.
+    # An off-by-one here is invisible in every downstream chart - the axis just
+    # shows the wrong number - so it is asserted rather than trusted.
+    path_states = (
+        case["variant_path"].str.split(cfg.VARIANT_SEPARATOR, regex=False).str.len()
+    )
+    mismatched = int((path_states != case["variant_length"]).sum())
+    check(
+        "variant length consistent",
+        mismatched == 0,
+        f"{mismatched:,} cases where variant_length disagrees with variant_path",
     )
     return problems
 

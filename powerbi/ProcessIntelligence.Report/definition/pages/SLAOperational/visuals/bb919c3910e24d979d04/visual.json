@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "bb919c3910e24d979d04",
+  "position": {
+    "x": 650,
+    "y": 440,
+    "z": 0,
+    "width": 610,
+    "height": 260,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_closed_code"
+                    }
+                  },
+                  "Property": "Closed Code"
+                }
+              },
+              "queryRef": "dim_closed_code.Closed Code",
+              "nativeQueryRef": "Closed Code"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Reopen Rate %"
+                }
+              },
+              "queryRef": "fact_incident_case.Reopen Rate %",
+              "nativeQueryRef": "Reopen Rate %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reopen Rate by Closed Code'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

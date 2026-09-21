@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "2a6ab968b03247d09697",
+  "position": {
+    "x": 20,
+    "y": 480,
+    "z": 0,
+    "width": 620,
+    "height": 220,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Path"
+                }
+              },
+              "queryRef": "dim_variant.Variant Path",
+              "nativeQueryRef": "Variant Path"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_variant"
+                    }
+                  },
+                  "Property": "Variant Length"
+                }
+              },
+              "queryRef": "dim_variant.Variant Length",
+              "nativeQueryRef": "Variant Length"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_incident_case"
+                    }
+                  },
+                  "Property": "Median Resolution Hours"
+                }
+              },
+              "queryRef": "fact_incident_case.Median Resolution Hours",
+              "nativeQueryRef": "Median Resolution Hours"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Variant Length vs Median Resolution Hours'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+table dim_state
+	lineageTag: 4119a779-42ae-4d1d-93c2-e2f7edf2400f
+
+	column state_key
+		dataType: int64
+		isHidden
+		lineageTag: 8e8b728b-45f4-4972-81aa-11c1912fb4d0
+		summarizeBy: none
+		sourceColumn: state_key
+
+	column State
+		dataType: string
+		lineageTag: a5fb26e6-da5f-45d7-9538-5d0d5e72843a
+		summarizeBy: none
+		sourceColumn: state_name
+		sortByColumn: state_sort_order
+
+	column 'State Category'
+		dataType: string
+		lineageTag: 964ffe23-50d9-496c-aa43-e689108d6803
+		summarizeBy: none
+		sourceColumn: state_category
+
+	column state_sort_order
+		dataType: int64
+		lineageTag: 54c6e2fd-69c4-4065-bf29-f3d681647c09
+		summarizeBy: none
+		sourceColumn: state_sort_order
+
+	column is_waiting_state
+		dataType: boolean
+		lineageTag: 5cb5f4df-dde4-4941-a24c-5fcafebfa33f
+		summarizeBy: none
+		sourceColumn: is_waiting_state
+
+	partition dim_state = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(
+						File.Contents(DataFolder & "dim_state.csv"),
+						[Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+					),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"state_key", Int64.Type}, {"state_name", type text}, {"state_category", type text}, {"state_sort_order", Int64.Type}, {"is_waiting_state", type logical}})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

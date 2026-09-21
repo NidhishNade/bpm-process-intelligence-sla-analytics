@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "ExecutiveOverview",
+    "Bottleneck",
+    "SLAOperational",
+    "Variants",
+    "Workload",
+    "TimeAnalysis",
+    "IncidentDetail"
+  ],
+  "activePageName": "ExecutiveOverview"
+}

@@ -4,7 +4,7 @@
 > Every figure below is produced by executing SQL against the warehouse.
 > Do not edit by hand.
 
-Generated: 2026-09-20 17:40 UTC
+Generated: 2026-09-20 17:54 UTC
 
 ---
 
@@ -116,16 +116,16 @@ Generated: 2026-09-20 17:40 UTC
 
 | variant_rank | variant_path | variant_length | incidents | pct_of_incidents | sla_attainment_pct | median_resolution_hours |
 |---|---|---|---|---|---|---|
-| 1 | New -> Resolved -> Closed | 2 | 6,282 | 25.21 | 77.83 | 1.57 |
-| 2 | New -> Active -> Resolved -> Closed | 2 | 5,493 | 22.04 | 58.60 | 34.62 |
-| 3 | Active -> Resolved -> Closed | 2 | 5,361 | 21.51 | 82.76 | 0.32 |
-| 4 | Resolved -> Closed | 1 | 1,816 | 7.29 | 83.70 | 0.10 |
-| 5 | New -> Active -> Awaiting User Info -> Resolved -> Closed | 3 | 1,697 | 6.81 | 28.87 | 189.18 |
-| 6 | New -> Awaiting User Info -> Resolved -> Closed | 2 | 1,520 | 6.10 | 35.20 | 148.43 |
-| 7 | Active -> Awaiting User Info -> Resolved -> Closed | 2 | 861 | 3.46 | 24.51 | 198.92 |
-| 8 | New -> Active -> Awaiting User Info -> Active -> Resolved -> Closed | 3 | 299 | 1.20 | 38.80 | 96.13 |
-| 9 | New -> Awaiting User Info -> Active -> Resolved -> Closed | 3 | 259 | 1.04 | 38.61 | 145.60 |
-| 10 | Awaiting User Info -> Resolved -> Closed | 2 | 133 | 0.53 | 31.58 | 184.85 |
+| 1 | New -> Resolved -> Closed | 3 | 6,282 | 25.21 | 77.83 | 1.57 |
+| 2 | New -> Active -> Resolved -> Closed | 4 | 5,493 | 22.04 | 58.60 | 34.62 |
+| 3 | Active -> Resolved -> Closed | 3 | 5,361 | 21.51 | 82.76 | 0.32 |
+| 4 | Resolved -> Closed | 2 | 1,816 | 7.29 | 83.70 | 0.10 |
+| 5 | New -> Active -> Awaiting User Info -> Resolved -> Closed | 5 | 1,697 | 6.81 | 28.87 | 189.18 |
+| 6 | New -> Awaiting User Info -> Resolved -> Closed | 4 | 1,520 | 6.10 | 35.20 | 148.43 |
+| 7 | Active -> Awaiting User Info -> Resolved -> Closed | 4 | 861 | 3.46 | 24.51 | 198.92 |
+| 8 | New -> Active -> Awaiting User Info -> Active -> Resolved -> Closed | 6 | 299 | 1.20 | 38.80 | 96.13 |
+| 9 | New -> Awaiting User Info -> Active -> Resolved -> Closed | 5 | 259 | 1.04 | 38.61 | 145.60 |
+| 10 | Awaiting User Info -> Resolved -> Closed | 3 | 133 | 0.53 | 31.58 | 184.85 |
 
 ## Q12_happy_path_vs_exception
 

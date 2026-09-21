@@ -1,0 +1,36 @@
+table dim_contact_type
+	lineageTag: 3048c14f-7327-473b-9b33-1c3e1529728c
+
+	column contact_type_key
+		dataType: int64
+		isHidden
+		lineageTag: 590f9982-3dd2-4179-a7e6-519e51fc5c90
+		summarizeBy: none
+		sourceColumn: contact_type_key
+
+	column 'Contact Type'
+		dataType: string
+		lineageTag: 2565ba6e-36f6-4a5e-8a3d-9226d0b03c75
+		summarizeBy: none
+		sourceColumn: contact_type_name
+
+	column is_self_service
+		dataType: boolean
+		lineageTag: cafc577b-5277-4c9d-bc76-fcf8166e1d30
+		summarizeBy: none
+		sourceColumn: is_self_service
+
+	partition dim_contact_type = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(
+						File.Contents(DataFolder & "dim_contact_type.csv"),
+						[Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+					),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"contact_type_key", Int64.Type}, {"contact_type_name", type text}, {"is_self_service", type logical}})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

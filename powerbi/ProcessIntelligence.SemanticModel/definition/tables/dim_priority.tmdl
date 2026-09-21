@@ -1,0 +1,43 @@
+table dim_priority
+	lineageTag: f66c8caa-ecfb-499d-8872-3a41c9d63f0d
+
+	column priority_key
+		dataType: int64
+		isHidden
+		lineageTag: 57cc42a5-5601-4adf-9eba-2e1a9ddf13f3
+		summarizeBy: none
+		sourceColumn: priority_key
+
+	column Priority
+		dataType: string
+		lineageTag: a89d393a-e59d-4866-bde7-f4413036b7e9
+		summarizeBy: none
+		sourceColumn: priority_label
+		sortByColumn: priority_rank
+
+	column priority_rank
+		dataType: int64
+		lineageTag: 8f675f47-17fc-47ac-99a5-37197dc84552
+		summarizeBy: none
+		sourceColumn: priority_rank
+
+	column is_high_priority
+		dataType: boolean
+		lineageTag: 50a83710-e847-4f6b-94cc-b194aa48892b
+		summarizeBy: none
+		sourceColumn: is_high_priority
+
+	partition dim_priority = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(
+						File.Contents(DataFolder & "dim_priority.csv"),
+						[Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+					),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"priority_key", Int64.Type}, {"priority_label", type text}, {"priority_rank", Int64.Type}, {"is_high_priority", type logical}})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
